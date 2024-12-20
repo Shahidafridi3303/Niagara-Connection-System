@@ -214,34 +214,6 @@ void AMyCharacter::ActivateChainLightning()
 		FHitResult HitResult;
 		if (GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility))
 		{
-			// Spawn lightning effect at the hit location
-			if (LightningEffect)
-			{
-				// Get the location of the character's feet (mesh location)
-				FVector FootLocation = GetMesh()->GetSocketLocation(TEXT("FootSocket")); // You can replace "FootSocket" with an actual socket name if needed
-
-				// Add an offset to the Z location (for example, 100 units above the feet)
-				FVector OffsetLocation = FootLocation + FVector(0.f, 0.f, 100.f); // Adjust the Z value as needed
-
-				// Attach Niagara to player with the offset location
-				NiagaraComp = UNiagaraFunctionLibrary::SpawnSystemAttached(
-					LightningEffect,
-					GetMesh(), // Attach to the player's mesh
-					NAME_None,
-					FVector::ZeroVector,
-					FRotator::ZeroRotator,
-					EAttachLocation::KeepRelativeOffset,
-					true
-				);
-
-				if (NiagaraComp)
-				{
-					// Update the end location of the lightning effect
-					NiagaraComp->SetNiagaraVariableVec3(TEXT("User.End"), HitResult.Location);
-					NiagaraComp->SetWorldLocation(OffsetLocation); // Set the Niagara effect position to the offset location
-				}
-			}
-
 			AActor* HitActor = HitResult.GetActor();
 			if (HitActor)
 			{
@@ -264,10 +236,33 @@ void AMyCharacter::ActivateChainLightning()
 				}
 			}
 		}
-		else
+
+		// Spawn lightning effect at the hit location
+		if (LightningEffect)
 		{
-			// Debug Line (No Hit)
-			DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Red, false, 2.0f, 0, 2.0f);
+			// Get the location of the character's feet (mesh location)
+			FVector FootLocation = GetMesh()->GetSocketLocation(TEXT("FootSocket")); // You can replace "FootSocket" with an actual socket name if needed
+
+			// Add an offset to the Z location (for example, 100 units above the feet)
+			FVector OffsetLocation = FootLocation + FVector(0.f, 0.f, 100.f); // Adjust the Z value as needed
+
+			// Attach Niagara to player with the offset location
+			NiagaraComp = UNiagaraFunctionLibrary::SpawnSystemAttached(
+				LightningEffect,
+				GetMesh(), // Attach to the player's mesh
+				NAME_None,
+				FVector::ZeroVector,
+				FRotator::ZeroRotator,
+				EAttachLocation::KeepRelativeOffset,
+				true
+			);
+
+			if (NiagaraComp)
+			{
+				// Update the end location of the lightning effect
+				NiagaraComp->SetNiagaraVariableVec3(TEXT("User.End"), EndLocation);
+				NiagaraComp->SetWorldLocation(OffsetLocation); // Set the Niagara effect position to the offset location
+			}
 		}
 	}
 }
