@@ -182,12 +182,6 @@ void AMyEnemy::GetHit(int32 DamageValue)
 	FTimerHandle TimerHandle2;
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle2, [this, DamageValue]()
 		{
-			if (PlayerCharacter)
-			{
-				// Call AddToChain on the player character to increment the chain count
-				PlayerCharacter->AddToChain();
-			}
-
 			if (bDying) return;
 
 			if (Health - DamageValue <= 0.f)
@@ -290,7 +284,7 @@ void AMyEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void AMyEnemy::PerformSphereTrace()
 {
 	// Ensure we don't process again if already done or currently processing
-	if (bHasPerformedSphereTrace || bIsProcessing)
+	if (bHasPerformedSphereTrace || bIsProcessing || PlayerCharacter->ChainCount >= ChainLimit)
 	{
 		return;
 	}

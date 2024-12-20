@@ -157,6 +157,9 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
 	float DecayFactor = 0.8f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
+	int32 ChainLimit = 3;
+
 	// Declare these variables in the class header
 private:
 	FVector StartLocation;
