@@ -157,4 +157,6 @@ private:
 	float ElapsedTime;
 	UNiagaraComponent* NiagaraComponent;
 	bool bIsInterpolating;
+
+	AMyEnemy* NextEnemy;
 };

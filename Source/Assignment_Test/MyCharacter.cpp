@@ -174,6 +174,10 @@ void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (NextEnemy)
+	{
+		NiagaraComp->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
+	}
 }
 
 // Called to bind functionality to input
@@ -220,7 +224,7 @@ void AMyCharacter::ActivateChainLightning()
 				FVector OffsetLocation = FootLocation + FVector(0.f, 0.f, 100.f); // Adjust the Z value as needed
 
 				// Attach Niagara to player with the offset location
-				UNiagaraComponent* NiagaraComp = UNiagaraFunctionLibrary::SpawnSystemAttached(
+				NiagaraComp = UNiagaraFunctionLibrary::SpawnSystemAttached(
 					LightningEffect,
 					GetMesh(), // Attach to the player's mesh
 					NAME_None,
@@ -261,6 +265,7 @@ void AMyCharacter::ActivateChainLightning()
 				if (HitEnemy)
 				{
 					HitEnemy->PerformSphereTrace();
+					NextEnemy = Cast<AMyEnemy>(HitEnemy);
 				}
 			}
 		}

@@ -202,4 +202,8 @@ public:
 
 	void ActivateChainLightning();
 	bool GetCameraTrace(FVector& OutStart, FVector& OutEnd);
+
+	class AMyEnemy* NextEnemy;
+
+	class UNiagaraComponent* NiagaraComp;
 };

@@ -37,6 +37,9 @@ AMyEnemy::AMyEnemy() :
 
 	bHasPerformedSphereTrace = false;
 	bIsProcessing = false;
+
+	// Initialize the static reference to null
+	NextEnemy = nullptr;
 }
 
 // Called when the game starts or when spawned
@@ -359,6 +362,9 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 
 	if (NearestActor)
 	{
+		// Set the global reference to the nearest enemy
+		NextEnemy = Cast<AMyEnemy>(NearestActor);
+
 		PerformNiagaraEffect(NearestActor);
 	}
 	else
@@ -378,6 +384,7 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 
 		if (NiagaraComponent)
 		{
+			// Initialize the start and target locations
 			TargetLocation = TargetActor->GetActorLocation();
 			TargetLocation.Z += 10.0f;
 
@@ -387,6 +394,7 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 			ElapsedTime = 0.0f;
 			bIsInterpolating = true;
 
+			// Set the initial Niagara variable for the end location
 			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), StartLocation);
 		}
 	}
@@ -420,6 +428,7 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Finished processing and marking as completed"));
 }
 
+
 void AMyEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -427,15 +436,29 @@ void AMyEnemy::Tick(float DeltaTime)
 	if (bIsInterpolating && NiagaraComponent)
 	{
 		ElapsedTime += DeltaTime;
+
+		// Calculate new end location based on interpolation
 		if (ElapsedTime < InterpolationTime)
 		{
+			// Interpolate between the start and target location
 			FVector NewEndLocation = FMath::Lerp(StartLocation, TargetLocation, ElapsedTime / InterpolationTime);
 			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NewEndLocation);
 		}
 		else
 		{
+			// Set the final target location
 			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), TargetLocation);
 			bIsInterpolating = false;
+		}
+	}
+
+	// Always update the Niagara effect to follow the enemy's position
+	if (NiagaraComponent)
+	{
+		NiagaraComponent->SetWorldLocation(GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
+		if (NextEnemy)
+		{
+			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
 		}
 	}
 }
