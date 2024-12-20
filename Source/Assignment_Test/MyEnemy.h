@@ -111,6 +111,7 @@ private:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	void ApplyLightningDamage();
 
 	//float CalculateChainDamage(int32 ChainIndex, EDecayModel DecayModel, float InitialDamage, float DecayFactor, float MinimumDamage, float ReductionPerChain);
 
@@ -149,6 +150,12 @@ private:
 	UNiagaraSystem* NiagaraEffect;
 
 	FTimerHandle TimerHandle_ResetCollision;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
+	float InitialDamage = 500;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
+	float DecayFactor = 0.8f;
 
 	// Declare these variables in the class header
 private:

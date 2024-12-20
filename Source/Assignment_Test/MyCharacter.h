@@ -206,12 +206,6 @@ public:
 
 	class UNiagaraComponent* NiagaraComp;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
-	float LighteningFactor = 750;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
-	float ChainDamageFactor = 10;
-
 	// Integer variable to store the chain count
 	UPROPERTY(BlueprintReadWrite, Category = "Chain")
 	int32 ChainCount;

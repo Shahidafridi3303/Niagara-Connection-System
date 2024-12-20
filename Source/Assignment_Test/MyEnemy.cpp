@@ -79,6 +79,9 @@ void AMyEnemy::BeginPlay()
 	}
 
 	Tags.Add(FName("Enemy"));
+
+	PlayerCharacter = Cast<AMyCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
+
 }
 
 AEnemyWeapon* AMyEnemy::SpawnDefaultWeapon()
@@ -179,8 +182,6 @@ void AMyEnemy::GetHit(int32 DamageValue)
 	FTimerHandle TimerHandle2;
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle2, [this, DamageValue]()
 		{
-			PlayerCharacter = Cast<AMyCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
-
 			if (PlayerCharacter)
 			{
 				// Call AddToChain on the player character to increment the chain count
@@ -417,7 +418,7 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 			// Debug: Check if the next trace is being scheduled
 
 			ChainTarget->PerformSphereTrace();
-			ChainTarget->GetHit(10);
+			ChainTarget->ApplyLightningDamage();
 			// Trigger next trace
 		}
 		
@@ -463,19 +464,26 @@ void AMyEnemy::Tick(float DeltaTime)
 	}
 }
 
-//float AMyEnemy::CalculateChainDamage(int32 ChainIndex, EDecayModel DecayModel, float InitialDamage, float DecayFactor, float MinimumDamage, float ReductionPerChain)
-//{
-//	switch (DecayModel)
-//	{
-//	case EDecayModel::Logarithmic:
-//		return InitialDamage / FMath::Log2(ChainIndex + 2);
-//	case EDecayModel::Exponential:
-//		return FMath::Max(InitialDamage * FMath::Pow(DecayFactor, ChainIndex - 1), MinimumDamage);
-//	case EDecayModel::Linear:
-//		return FMath::Max(InitialDamage - (ReductionPerChain * (ChainIndex - 1)), MinimumDamage);
-//	case EDecayModel::Randomized:
-//		return FMath::Max(InitialDamage * FMath::Pow(DecayFactor, ChainIndex - 1) * FMath::FRandRange(0.8f, 1.2f), MinimumDamage);
-//	default:
-//		return InitialDamage;
-//	}
+void AMyEnemy::ApplyLightningDamage()
+{
+	if (!PlayerCharacter)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Player reference is null!"));
+		return;
+	}
+
+	// Current enemy index in the chain
+	int32 EnemyIndex = PlayerCharacter->ChainCount;
+
+	// Damage calculation logic
+	float Damage = InitialDamage * FMath::Pow(DecayFactor, EnemyIndex);
+
+	// Apply damage to the enemy
+	GetHit(Damage);
+
+	// Increment the enemy count in the player's chain
+	PlayerCharacter->AddToChain();
+
+	// Log damage for debugging
+	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Yellow,FString::Printf(TEXT("Enemy %d takes %f damage"), EnemyIndex + 1, Damage));
 }

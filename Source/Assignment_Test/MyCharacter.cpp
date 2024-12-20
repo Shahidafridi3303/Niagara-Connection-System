@@ -259,7 +259,7 @@ void AMyCharacter::ActivateChainLightning()
 				if (HitEnemy)
 				{
 					HitEnemy->PerformSphereTrace();
-					HitEnemy->GetHit(LighteningFactor);
+					HitEnemy->ApplyLightningDamage();
 					NextEnemy = Cast<AMyEnemy>(HitEnemy);
 				}
 			}
