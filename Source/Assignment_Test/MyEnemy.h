@@ -24,6 +24,7 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<class AEnemyWeapon> DefaultWeaponClass;
+	FTimerHandle ChainTimerHandle;
 
 	AEnemyWeapon* SpawnDefaultWeapon();
 
@@ -140,7 +141,7 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	float TraceRadius = 200.0f;
+	float TraceRadius = 3000.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Effect", meta = (AllowPrivateAccess = "true"))
 	UNiagaraSystem* NiagaraEffect;

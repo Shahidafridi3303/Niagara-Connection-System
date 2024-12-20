@@ -50,8 +50,8 @@ void AMyEnemy::BeginPlay()
 	CombatRangeSphere->OnComponentBeginOverlap.AddDynamic(this, &AMyEnemy::CombatRangeOverlap);
 	CombatRangeSphere->OnComponentEndOverlap.AddDynamic(this, &AMyEnemy::CombatRangeEndOverlap);
 
-	GetMesh()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
-	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
+	//GetMesh()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
+	//GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 
 	const FVector WorldPatrolPoint = UKismetMathLibrary::TransformLocation(
 		GetActorTransform(),
@@ -270,18 +270,24 @@ void AMyEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 
 //// ***** Niagara connection **** /////
-
-
-
 void AMyEnemy::PerformSphereTrace()
 {
+	// Ensure we don't process again if already done or currently processing
 	if (bHasPerformedSphereTrace || bIsProcessing)
 	{
-		return; // Avoid processing if the actor has already performed a trace or is in the middle of processing
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Already processed or currently processing, returning."));
+		return;
 	}
 
-	bIsProcessing = true; // Mark as processing to prevent further recursive calls
+	bIsProcessing = true;  // Mark as processing
 	FTimerHandle TimerHandle;
+
+	// Disable capsule collision for this enemy to prevent it from being considered in subsequent traces
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	// Debug: Performing sphere trace
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Performing sphere trace"));
+
 	// Delay execution of the sphere trace by 1 second
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
 		{
@@ -294,14 +300,12 @@ void AMyEnemy::PerformSphereTrace()
 			if (bHit)
 			{
 				TArray<AActor*> ValidTargets;
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("Found %d overlaps"), OverlapResults.Num()));
 
 				for (auto& Result : OverlapResults)
 				{
 					AActor* OverlappedActor = Result.GetActor();
 					if (OverlappedActor && OverlappedActor != this && !OverlappedActor->IsPendingKill())
 					{
-						// Check if the actor has the "ChainLightningTarget" tag
 						if (OverlappedActor->ActorHasTag(FName("Enemy")))
 						{
 							ValidTargets.Add(OverlappedActor);
@@ -309,29 +313,40 @@ void AMyEnemy::PerformSphereTrace()
 					}
 				}
 
-				HandleOverlappingActors(ValidTargets);
+				if (ValidTargets.Num() > 0)
+				{
+					HandleOverlappingActors(ValidTargets);
+				}
+				else
+				{
+					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No valid enemies found in range"));
+				}
 			}
 			else
 			{
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No overlaps found"));
 			}
 
-			bHasPerformedSphereTrace = true;
-			GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision); // Disable collision to avoid further traces
-		}, 1.0f, false); // Delay for 1 second before performing the sphere trace
+			// Re-enable capsule collision for this enemy
+			//AgroSphere()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+
+			// Reset trace state
+		}, 1, false);
 }
 
 void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 {
 	if (ValidTargets.Num() == 0)
 	{
-		bIsProcessing = false; // Reset processing flag
+		bIsProcessing = false;  // Reset processing flag
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No valid targets to handle."));
 		return;
 	}
 
 	AActor* NearestActor = nullptr;
 	float MinDistance = FLT_MAX;
 
+	// Find the closest target
 	for (AActor* Target : ValidTargets)
 	{
 		float Distance = FVector::Dist(GetActorLocation(), Target->GetActorLocation());
@@ -340,35 +355,15 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 			MinDistance = Distance;
 			NearestActor = Target;
 		}
-
 	}
 
 	if (NearestActor)
 	{
 		PerformNiagaraEffect(NearestActor);
 	}
-}
-
-void AMyEnemy::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-	// Interpolate the endpoint over time
-	if (bIsInterpolating && NiagaraComponent)
+	else
 	{
-		ElapsedTime += DeltaTime;
-		if (ElapsedTime < InterpolationTime)
-		{
-			// Lerp the endpoint between StartLocation and TargetLocation
-			FVector NewEndLocation = FMath::Lerp(StartLocation, TargetLocation, ElapsedTime / InterpolationTime);
-			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NewEndLocation);
-		}
-		else
-		{
-			// Set the endpoint to the final target location when interpolation is complete
-			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), TargetLocation);
-			bIsInterpolating = false; // Stop interpolation
-		}
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No nearest actor found"));
 	}
 }
 
@@ -376,38 +371,71 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 {
 	if (NiagaraEffect)
 	{
-		// Apply Z offset to the spawn location
 		FVector SpawnLocation = GetActorLocation();
-		SpawnLocation.Z += 100.0f; // Apply the Z offset here
+		SpawnLocation.Z += 10.0f;
 
 		NiagaraComponent = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), NiagaraEffect, SpawnLocation);
 
 		if (NiagaraComponent)
 		{
-			// Apply Z offset to the target location
 			TargetLocation = TargetActor->GetActorLocation();
-			TargetLocation.Z += 100.0f; // Apply the Z offset to the end location
+			TargetLocation.Z += 10.0f;
 
-			// Initialize the interpolation variables
 			StartLocation = SpawnLocation;
 			InterpolatedEnd = StartLocation;
-			InterpolationTime = 1.0f; // 1 second for interpolation
+			InterpolationTime = 1.0f;
 			ElapsedTime = 0.0f;
 			bIsInterpolating = true;
 
-			// Set the initial endpoint
 			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), StartLocation);
 		}
 	}
 
+	// Debug: Check if the actor is of type AMyEnemy
 	if (TargetActor->IsA(AMyEnemy::StaticClass()))
 	{
 		AMyEnemy* ChainTarget = Cast<AMyEnemy>(TargetActor);
 		if (ChainTarget && !ChainTarget->bHasPerformedSphereTrace)
 		{
-			ChainTarget->PerformSphereTrace();
+			// Debug: Ensure we're triggering the next trace
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Chaining to next enemy"));
+
+			// Reset state for the next enemy (bHasPerformedSphereTrace should be false to allow it to perform trace)
+			ChainTarget->bHasPerformedSphereTrace = false;  // Ensure it's ready for the next trace
+
+			// Debug: Check if the next trace is being scheduled
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, TEXT("Scheduling next trace for the next enemy"));
+
+			ChainTarget->PerformSphereTrace();  // Trigger next trace
+		}
+		else
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, TEXT("Cannot chain to next enemy (either already traced or not valid)"));
 		}
 	}
 
-	bIsProcessing = false; // Reset processing flag after completing the chain lightning
+	// Reset the flags after the effect is performed
+	bIsProcessing = false;  // Reset processing flag
+	bHasPerformedSphereTrace = true;  // Mark this enemy as having performed the trace
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Finished processing and marking as completed"));
+}
+
+void AMyEnemy::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (bIsInterpolating && NiagaraComponent)
+	{
+		ElapsedTime += DeltaTime;
+		if (ElapsedTime < InterpolationTime)
+		{
+			FVector NewEndLocation = FMath::Lerp(StartLocation, TargetLocation, ElapsedTime / InterpolationTime);
+			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NewEndLocation);
+		}
+		else
+		{
+			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), TargetLocation);
+			bIsInterpolating = false;
+		}
+	}
 }

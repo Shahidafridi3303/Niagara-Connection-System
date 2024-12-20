@@ -257,9 +257,9 @@ void AMyCharacter::ActivateChainLightning()
 					HitChainLightning->PerformSphereTrace(); // This will call the sphere trace on the hit actor
 				}
 
-				if (AMyEnemy* HitEnemy = Cast<AMyEnemy>(HitActor))
+				AMyEnemy* HitEnemy = Cast<AMyEnemy>(HitActor);
+				if (HitEnemy)
 				{
-					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, TEXT("Hit Enemy!"));
 					HitEnemy->PerformSphereTrace();
 				}
 			}
