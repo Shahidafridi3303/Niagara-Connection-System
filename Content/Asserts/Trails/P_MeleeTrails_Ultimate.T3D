@@ -1,0 +1,578 @@
+Begin Object Class=/Script/Engine.ParticleSystem Name="P_MeleeTrails_Ultimate" ExportPath="/Script/Engine.ParticleSystem'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate'"
+   Begin Object Class=/Script/Engine.ParticleModuleColor Name="ParticleModuleColor_0" ExportPath="/Script/Engine.ParticleModuleColor'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_0'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="DistributionFloatConstant_0" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_0.DistributionFloatConstant_0'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionVectorConstant Name="DistributionVectorConstant_0" ExportPath="/Script/Engine.DistributionVectorConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_0.DistributionVectorConstant_0'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleRequired Name="ParticleModuleRequired_0" ExportPath="/Script/Engine.ParticleModuleRequired'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_0'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_0.RequiredDistributionSpawnRate'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleRequired Name="ParticleModuleRequired_2" ExportPath="/Script/Engine.ParticleModuleRequired'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_2'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_2.RequiredDistributionSpawnRate'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleRequired Name="ParticleModuleRequired_4" ExportPath="/Script/Engine.ParticleModuleRequired'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_4'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_4.RequiredDistributionSpawnRate'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleSpawn Name="ParticleModuleSpawn_0" ExportPath="/Script/Engine.ParticleModuleSpawn'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="BurstScaleDistribution" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0.BurstScaleDistribution'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0.RequiredDistributionSpawnRate'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRateScale" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0.RequiredDistributionSpawnRateScale'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleSpawn Name="ParticleModuleSpawn_1" ExportPath="/Script/Engine.ParticleModuleSpawn'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="BurstScaleDistribution" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1.BurstScaleDistribution'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1.RequiredDistributionSpawnRate'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRateScale" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1.RequiredDistributionSpawnRateScale'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleSpawn Name="ParticleModuleSpawn_4" ExportPath="/Script/Engine.ParticleModuleSpawn'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="BurstScaleDistribution" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4.BurstScaleDistribution'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4.RequiredDistributionSpawnRate'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstant Name="RequiredDistributionSpawnRateScale" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4.RequiredDistributionSpawnRateScale'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleColor Name="ParticleModuleColor_2" ExportPath="/Script/Engine.ParticleModuleColor'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_5" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_2.DistributionFloatConstantCurve_5'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionVectorConstant Name="DistributionVectorConstant_0" ExportPath="/Script/Engine.DistributionVectorConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_2.DistributionVectorConstant_0'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleColorScaleOverLife Name="ParticleModuleColorScaleOverLife_0" ExportPath="/Script/Engine.ParticleModuleColorScaleOverLife'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_0" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0.DistributionFloatConstantCurve_0'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionVectorConstantCurve Name="DistributionVectorConstantCurve_0" ExportPath="/Script/Engine.DistributionVectorConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0.DistributionVectorConstantCurve_0'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleColorScaleOverLife Name="ParticleModuleColorScaleOverLife_2" ExportPath="/Script/Engine.ParticleModuleColorScaleOverLife'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_0" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2.DistributionFloatConstantCurve_0'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionVectorConstantCurve Name="DistributionVectorConstantCurve_0" ExportPath="/Script/Engine.DistributionVectorConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2.DistributionVectorConstantCurve_0'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleColorScaleOverLife Name="ParticleModuleColorScaleOverLife_4" ExportPath="/Script/Engine.ParticleModuleColorScaleOverLife'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_0" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4.DistributionFloatConstantCurve_0'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionVectorConstantCurve Name="DistributionVectorConstantCurve_0" ExportPath="/Script/Engine.DistributionVectorConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4.DistributionVectorConstantCurve_0'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleLifetime Name="ParticleModuleLifetime_0" ExportPath="/Script/Engine.ParticleModuleLifetime'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_0'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_8" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_0.DistributionFloatConstantCurve_8'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleLifetime Name="ParticleModuleLifetime_5" ExportPath="/Script/Engine.ParticleModuleLifetime'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_8" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_5.DistributionFloatConstantCurve_8'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleParameterDynamic Name="ParticleModuleParameterDynamic_0" ExportPath="/Script/Engine.ParticleModuleParameterDynamic'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_1" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_1'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_3" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_3'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_6" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_6'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_7" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_7'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleParameterDynamic Name="ParticleModuleParameterDynamic_2" ExportPath="/Script/Engine.ParticleModuleParameterDynamic'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_1" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_1'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_3" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_3'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_6" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_6'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_7" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_7'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleParameterDynamic Name="ParticleModuleParameterDynamic_3" ExportPath="/Script/Engine.ParticleModuleParameterDynamic'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3'"
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_1" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_1'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_3" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_3'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_6" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_6'"
+      End Object
+      Begin Object Class=/Script/Engine.DistributionFloatConstantCurve Name="DistributionFloatConstantCurve_7" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_7'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.InterpCurveEdSetup Name="InterpCurveEdSetup_0" ExportPath="/Script/Engine.InterpCurveEdSetup'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:InterpCurveEdSetup_0'"
+   End Object
+   Begin Object Class=/Script/Engine.ParticleSpriteEmitter Name="ParticleSpriteEmitter_0" ExportPath="/Script/Engine.ParticleSpriteEmitter'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0'"
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_0" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0.ParticleLODLevel_0'"
+      End Object
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_1" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0.ParticleLODLevel_1'"
+      End Object
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_2" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0.ParticleLODLevel_2'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleSpriteEmitter Name="ParticleSpriteEmitter_2" ExportPath="/Script/Engine.ParticleSpriteEmitter'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2'"
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_0" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2.ParticleLODLevel_0'"
+      End Object
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_1" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2.ParticleLODLevel_1'"
+      End Object
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_2" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2.ParticleLODLevel_2'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleSpriteEmitter Name="ParticleSpriteEmitter_4" ExportPath="/Script/Engine.ParticleSpriteEmitter'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4'"
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_3" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4.ParticleLODLevel_3'"
+      End Object
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_4" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4.ParticleLODLevel_4'"
+      End Object
+      Begin Object Class=/Script/Engine.ParticleLODLevel Name="ParticleLODLevel_5" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4.ParticleLODLevel_5'"
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleTypeDataAnimTrail Name="ParticleModuleTypeDataAnimTrail_0" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_0'"
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleTypeDataAnimTrail Name="ParticleModuleTypeDataAnimTrail_4" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_4'"
+   End Object
+   Begin Object Class=/Script/Engine.ParticleModuleTypeDataAnimTrail Name="ParticleModuleTypeDataAnimTrail_5" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_5'"
+   End Object
+   Begin Object Name="ParticleModuleColor_0" ExportPath="/Script/Engine.ParticleModuleColor'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_0'"
+      Begin Object Name="DistributionFloatConstant_0" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_0.DistributionFloatConstant_0'"
+         Constant=25.000000
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionVectorConstant_0" ExportPath="/Script/Engine.DistributionVectorConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_0.DistributionVectorConstant_0'"
+         bIsDirty=False
+         bBakedDataSuccesfully=True
+      End Object
+      StartColor=(Distribution="/Script/Engine.DistributionVectorConstant'DistributionVectorConstant_0'",Table=(Values=(0.000000,0.000000,0.000000),Op=1,EntryCount=1,EntryStride=3))
+      StartAlpha=(MinValue=25.000000,MaxValue=25.000000,Distribution="/Script/Engine.DistributionFloatConstant'DistributionFloatConstant_0'",Table=(Values=(25.000000),Op=1,EntryCount=1,EntryStride=1))
+      LODValidity=7
+      ModuleEditorColor=(B=200,G=0,R=137,A=255)
+   End Object
+   Begin Object Name="ParticleModuleRequired_0" ExportPath="/Script/Engine.ParticleModuleRequired'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_0'"
+      Begin Object Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_0.RequiredDistributionSpawnRate'"
+      End Object
+      Material="/Script/Engine.Material'/Game/ParagonGrux/FX/Materials/Fire/M_FireTrail.M_FireTrail'"
+      bKillOnDeactivate=True
+      bKillOnCompleted=True
+      bUseLegacyEmitterTime=False
+      SpawnRate=(Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRate'")
+      RandomImageTime=1.000000
+      EmitterLoops=1
+      LODValidity=7
+      ModuleEditorColor=(B=233,G=0,R=38,A=255)
+   End Object
+   Begin Object Name="ParticleModuleRequired_2" ExportPath="/Script/Engine.ParticleModuleRequired'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_2'"
+      Begin Object Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_2.RequiredDistributionSpawnRate'"
+      End Object
+      Material="/Script/Engine.Material'/Game/ParagonGrux/FX/Materials/Fire/M_FireTrail.M_FireTrail'"
+      bKillOnDeactivate=True
+      bKillOnCompleted=True
+      bUseLegacyEmitterTime=False
+      SpawnRate=(Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRate'")
+      RandomImageTime=1.000000
+      EmitterLoops=1
+      LODValidity=7
+      ModuleEditorColor=(B=223,G=0,R=87,A=255)
+   End Object
+   Begin Object Name="ParticleModuleRequired_4" ExportPath="/Script/Engine.ParticleModuleRequired'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_4'"
+      Begin Object Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleRequired_4.RequiredDistributionSpawnRate'"
+      End Object
+      Material="/Script/Engine.Material'/Game/ParagonGrux/FX/Materials/Fire/M_FireTrail.M_FireTrail'"
+      bKillOnDeactivate=True
+      bKillOnCompleted=True
+      bUseLegacyEmitterTime=False
+      SpawnRate=(Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRate'")
+      RandomImageTime=1.000000
+      EmitterLoops=1
+      bEnabled=False
+      LODValidity=7
+      ModuleEditorColor=(B=157,G=185,R=0,A=255)
+   End Object
+   Begin Object Name="ParticleModuleSpawn_0" ExportPath="/Script/Engine.ParticleModuleSpawn'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0'"
+      Begin Object Name="BurstScaleDistribution" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0.BurstScaleDistribution'"
+         Constant=1.000000
+      End Object
+      Begin Object Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0.RequiredDistributionSpawnRate'"
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="RequiredDistributionSpawnRateScale" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_0.RequiredDistributionSpawnRateScale'"
+         Constant=1.000000
+         bBakedDataSuccesfully=True
+      End Object
+      Rate=(Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRate'",Table=(Values=(0.000000),Op=1,EntryCount=1,EntryStride=1))
+      RateScale=(MinValue=1.000000,MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRateScale'",Table=(Values=(1.000000),Op=1,EntryCount=1,EntryStride=1))
+      BurstScale=(Distribution="/Script/Engine.DistributionFloatConstant'BurstScaleDistribution'")
+      LODValidity=7
+      ModuleEditorColor=(B=173,G=171,R=0,A=255)
+   End Object
+   Begin Object Name="ParticleModuleSpawn_1" ExportPath="/Script/Engine.ParticleModuleSpawn'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1'"
+      Begin Object Name="BurstScaleDistribution" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1.BurstScaleDistribution'"
+         Constant=1.000000
+      End Object
+      Begin Object Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1.RequiredDistributionSpawnRate'"
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="RequiredDistributionSpawnRateScale" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_1.RequiredDistributionSpawnRateScale'"
+         Constant=1.000000
+         bBakedDataSuccesfully=True
+      End Object
+      Rate=(Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRate'",Table=(Values=(0.000000),Op=1,EntryCount=1,EntryStride=1))
+      RateScale=(MinValue=1.000000,MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRateScale'",Table=(Values=(1.000000),Op=1,EntryCount=1,EntryStride=1))
+      BurstScale=(Distribution="/Script/Engine.DistributionFloatConstant'BurstScaleDistribution'")
+      LODValidity=7
+      ModuleEditorColor=(B=0,G=113,R=212,A=255)
+   End Object
+   Begin Object Name="ParticleModuleSpawn_4" ExportPath="/Script/Engine.ParticleModuleSpawn'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4'"
+      Begin Object Name="BurstScaleDistribution" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4.BurstScaleDistribution'"
+         Constant=1.000000
+      End Object
+      Begin Object Name="RequiredDistributionSpawnRate" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4.RequiredDistributionSpawnRate'"
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="RequiredDistributionSpawnRateScale" ExportPath="/Script/Engine.DistributionFloatConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleSpawn_4.RequiredDistributionSpawnRateScale'"
+         Constant=1.000000
+         bBakedDataSuccesfully=True
+      End Object
+      Rate=(Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRate'",Table=(Values=(0.000000),Op=1,EntryCount=1,EntryStride=1))
+      RateScale=(MinValue=1.000000,MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstant'RequiredDistributionSpawnRateScale'",Table=(Values=(1.000000),Op=1,EntryCount=1,EntryStride=1))
+      BurstScale=(Distribution="/Script/Engine.DistributionFloatConstant'BurstScaleDistribution'")
+      LODValidity=7
+      ModuleEditorColor=(B=175,G=169,R=0,A=255)
+   End Object
+   Begin Object Name="ParticleModuleColor_2" ExportPath="/Script/Engine.ParticleModuleColor'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+      Begin Object Name="DistributionFloatConstantCurve_5" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_2.DistributionFloatConstantCurve_5'"
+         ConstantCurve=(Points=((InVal=0.200000,OutVal=10.000000),(InVal=0.300000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionVectorConstant_0" ExportPath="/Script/Engine.DistributionVectorConstant'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColor_2.DistributionVectorConstant_0'"
+         Constant=(X=1000.000000,Y=150.000000,Z=0.000000)
+         bIsDirty=False
+         bBakedDataSuccesfully=True
+      End Object
+      StartColor=(MaxValue=1000.000000,MinValueVec=(X=1000.000000,Y=150.000000,Z=0.000000),MaxValueVec=(X=1000.000000,Y=150.000000,Z=0.000000),Distribution="/Script/Engine.DistributionVectorConstant'DistributionVectorConstant_0'",Table=(Values=(1000.000000,150.000000,0.000000),Op=1,EntryCount=1,EntryStride=3))
+      StartAlpha=(MaxValue=10.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_5'",Table=(TimeScale=9.999999,TimeBias=0.200000,Values=(10.000000,0.000000),Op=1,EntryCount=2,EntryStride=1))
+      LODValidity=7
+      ModuleEditorColor=(B=229,G=0,R=62,A=255)
+   End Object
+   Begin Object Name="ParticleModuleColorScaleOverLife_0" ExportPath="/Script/Engine.ParticleModuleColorScaleOverLife'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0'"
+      Begin Object Name="DistributionFloatConstantCurve_0" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0.DistributionFloatConstantCurve_0'"
+         ConstantCurve=(Points=((InVal=0.800000,OutVal=1.000000,ArriveTangent=-2.665672,LeaveTangent=-2.665672,InterpMode=CIM_CurveUser),(InVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionVectorConstantCurve_0" ExportPath="/Script/Engine.DistributionVectorConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0.DistributionVectorConstantCurve_0'"
+         ConstantCurve=(Points=((OutVal=(X=1.000000,Y=1.000000,Z=1.000000),ArriveTangent=(X=-3.800754,Y=0.000000,Z=0.000000),LeaveTangent=(X=-3.800754,Y=0.000000,Z=0.000000),InterpMode=CIM_CurveUser),(InVal=0.200000,OutVal=(X=0.001000,Y=15.000000,Z=0.000000)),(InVal=1.000000)))
+         LockedAxes=EDVLF_XYZ
+         bIsDirty=False
+         bBakedDataSuccesfully=True
+      End Object
+      ColorScaleOverLife=(MaxValue=1.000000,MaxValueVec=(X=1.000000,Y=1.000000,Z=1.000000),Distribution="/Script/Engine.DistributionVectorConstantCurve'DistributionVectorConstantCurve_0'",Table=(TimeScale=31.000000,Values=(1.000000,1.000000,1.000000,0.844060,0.844060,0.844060,0.642618,0.642618,0.642618,0.426788,0.426788,0.426788,0.227680,0.227680,0.227680,0.076408,0.076408,0.076408,0.004082,0.004082,0.004082,0.000968,0.000968,0.000968,0.000927,0.000927,0.000927,0.000887,0.000887,0.000887,0.000847,0.000847,0.000847,0.000806,0.000806,0.000806,0.000766,0.000766,0.000766,0.000726,0.000726,0.000726,0.000685,0.000685,0.000685,0.000645,0.000645,0.000645,0.000605,0.000605,0.000605,0.000565,0.000565,0.000565,0.000524,0.000524,0.000524,0.000484,0.000484,0.000484,0.000444,0.000444,0.000444,0.000403,0.000403,0.000403,0.000363,0.000363,0.000363,0.000323,0.000323,0.000323,0.000282,0.000282,0.000282,0.000242,0.000242,0.000242,0.000202,0.000202,0.000202,0.000161,0.000161,0.000161,0.000121,0.000121,0.000121,0.000081,0.000081,0.000081,0.000040,0.000040,0.000040,0.000000,0.000000,0.000000),Op=1,EntryCount=32,EntryStride=3))
+      AlphaScaleOverLife=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_0'",Table=(TimeScale=15.000001,TimeBias=0.800000,Values=(1.000000,0.661751,0.219781,0.000000),Op=1,EntryCount=4,EntryStride=1))
+      LODValidity=7
+      ModuleEditorColor=(B=0,G=122,R=208,A=255)
+   End Object
+   Begin Object Name="ParticleModuleColorScaleOverLife_2" ExportPath="/Script/Engine.ParticleModuleColorScaleOverLife'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2'"
+      Begin Object Name="DistributionFloatConstantCurve_0" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2.DistributionFloatConstantCurve_0'"
+         ConstantCurve=(Points=((InVal=0.800000,OutVal=1.000000,ArriveTangent=-2.665672,LeaveTangent=-2.665672,InterpMode=CIM_CurveUser),(InVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionVectorConstantCurve_0" ExportPath="/Script/Engine.DistributionVectorConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2.DistributionVectorConstantCurve_0'"
+         ConstantCurve=(Points=((OutVal=(X=1.000000,Y=1.000000,Z=1.000000),ArriveTangent=(X=-3.800754,Y=0.000000,Z=0.000000),LeaveTangent=(X=-3.800754,Y=0.000000,Z=0.000000),InterpMode=CIM_CurveUser),(InVal=0.500000,OutVal=(X=0.001000,Y=15.000000,Z=0.000000),ArriveTangent=(X=-0.001000,Y=-15.000000,Z=0.000000),LeaveTangent=(X=-0.001000,Y=-15.000000,Z=0.000000)),(InVal=1.000000)))
+         LockedAxes=EDVLF_XYZ
+         bIsDirty=False
+         bBakedDataSuccesfully=True
+      End Object
+      ColorScaleOverLife=(MaxValue=1.000000,MaxValueVec=(X=1.000000,Y=1.000000,Z=1.000000),Distribution="/Script/Engine.DistributionVectorConstantCurve'DistributionVectorConstantCurve_0'",Table=(TimeScale=7.000000,Values=(1.000000,1.000000,1.000000,0.524981,0.524981,0.524981,0.194855,0.194855,0.194855,0.023212,0.023212,0.023212,0.000857,0.000857,0.000857,0.000571,0.000571,0.000571,0.000286,0.000286,0.000286,0.000000,0.000000,0.000000),Op=1,EntryCount=8,EntryStride=3))
+      AlphaScaleOverLife=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_0'",Table=(TimeScale=15.000001,TimeBias=0.800000,Values=(1.000000,0.661751,0.219781,0.000000),Op=1,EntryCount=4,EntryStride=1))
+      LODValidity=7
+      ModuleEditorColor=(B=208,G=0,R=124,A=255)
+   End Object
+   Begin Object Name="ParticleModuleColorScaleOverLife_4" ExportPath="/Script/Engine.ParticleModuleColorScaleOverLife'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4'"
+      Begin Object Name="DistributionFloatConstantCurve_0" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4.DistributionFloatConstantCurve_0'"
+         ConstantCurve=(Points=((InVal=0.800000,OutVal=1.000000,ArriveTangent=-2.665672,LeaveTangent=-2.665672,InterpMode=CIM_CurveUser),(InVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionVectorConstantCurve_0" ExportPath="/Script/Engine.DistributionVectorConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4.DistributionVectorConstantCurve_0'"
+         ConstantCurve=(Points=((OutVal=(X=1.000000,Y=1.000000,Z=1.000000),ArriveTangent=(X=-3.800754,Y=0.000000,Z=0.000000),LeaveTangent=(X=-3.800754,Y=0.000000,Z=0.000000),InterpMode=CIM_CurveUser),(InVal=0.200000,OutVal=(X=0.001000,Y=15.000000,Z=0.000000)),(InVal=1.000000)))
+         LockedAxes=EDVLF_XYZ
+         bIsDirty=False
+         bBakedDataSuccesfully=True
+      End Object
+      ColorScaleOverLife=(MaxValue=1.000000,MaxValueVec=(X=1.000000,Y=1.000000,Z=1.000000),Distribution="/Script/Engine.DistributionVectorConstantCurve'DistributionVectorConstantCurve_0'",Table=(TimeScale=31.000000,Values=(1.000000,1.000000,1.000000,0.844060,0.844060,0.844060,0.642618,0.642618,0.642618,0.426788,0.426788,0.426788,0.227680,0.227680,0.227680,0.076408,0.076408,0.076408,0.004082,0.004082,0.004082,0.000968,0.000968,0.000968,0.000927,0.000927,0.000927,0.000887,0.000887,0.000887,0.000847,0.000847,0.000847,0.000806,0.000806,0.000806,0.000766,0.000766,0.000766,0.000726,0.000726,0.000726,0.000685,0.000685,0.000685,0.000645,0.000645,0.000645,0.000605,0.000605,0.000605,0.000565,0.000565,0.000565,0.000524,0.000524,0.000524,0.000484,0.000484,0.000484,0.000444,0.000444,0.000444,0.000403,0.000403,0.000403,0.000363,0.000363,0.000363,0.000323,0.000323,0.000323,0.000282,0.000282,0.000282,0.000242,0.000242,0.000242,0.000202,0.000202,0.000202,0.000161,0.000161,0.000161,0.000121,0.000121,0.000121,0.000081,0.000081,0.000081,0.000040,0.000040,0.000040,0.000000,0.000000,0.000000),Op=1,EntryCount=32,EntryStride=3))
+      AlphaScaleOverLife=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_0'",Table=(TimeScale=15.000001,TimeBias=0.800000,Values=(1.000000,0.661751,0.219781,0.000000),Op=1,EntryCount=4,EntryStride=1))
+      LODValidity=7
+      ModuleEditorColor=(B=68,G=227,R=0,A=255)
+   End Object
+   Begin Object Name="ParticleModuleLifetime_0" ExportPath="/Script/Engine.ParticleModuleLifetime'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_0'"
+      Begin Object Name="DistributionFloatConstantCurve_8" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_0.DistributionFloatConstantCurve_8'"
+         ConstantCurve=(Points=((OutVal=0.250000),(InVal=0.700000,OutVal=0.010000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Lifetime=(MinValue=0.010000,MaxValue=0.250000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_8'",Table=(TimeScale=1.428571,Values=(0.250000,0.010000),Op=1,EntryCount=2,EntryStride=1))
+      LODValidity=7
+      ModuleEditorColor=(B=128,G=0,R=205,A=255)
+   End Object
+   Begin Object Name="ParticleModuleLifetime_5" ExportPath="/Script/Engine.ParticleModuleLifetime'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+      Begin Object Name="DistributionFloatConstantCurve_8" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleLifetime_5.DistributionFloatConstantCurve_8'"
+         ConstantCurve=(Points=((OutVal=0.700000),(InVal=0.700000,OutVal=0.010000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Lifetime=(MinValue=0.010000,MaxValue=0.700000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_8'",Table=(TimeScale=1.428571,Values=(0.700000,0.010000),Op=1,EntryCount=2,EntryStride=1))
+      LODValidity=7
+      ModuleEditorColor=(B=210,G=0,R=119,A=255)
+   End Object
+   Begin Object Name="ParticleModuleParameterDynamic_0" ExportPath="/Script/Engine.ParticleModuleParameterDynamic'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0'"
+      Begin Object Name="DistributionFloatConstantCurve_1" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_1'"
+         ConstantCurve=(Points=((),(InVal=0.800000,OutVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_3" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_3'"
+         ConstantCurve=(Points=((ArriveTangent=-0.002946,LeaveTangent=-0.002946,InterpMode=CIM_CurveUser),(InVal=1.000000,OutVal=-0.500000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_6" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_6'"
+         ConstantCurve=(Points=((ArriveTangent=2.243218,LeaveTangent=2.243218,InterpMode=CIM_CurveUser),(InVal=1.000000,OutVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_7" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0.DistributionFloatConstantCurve_7'"
+         ConstantCurve=(Points=((OutVal=0.300000),(InVal=0.100000,OutVal=0.100000),(InVal=1.000000,OutVal=0.500000)))
+         bBakedDataSuccesfully=True
+      End Object
+      DynamicParams(0)=(ParamName="UPosition",ParamValue=(MinValue=-0.500000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_3'",Table=(TimeScale=1.000000,Values=(0.000000,-0.500000),Op=1,EntryCount=2,EntryStride=1)))
+      DynamicParams(1)=(ParamName="SecondaryPanPosition",ParamValue=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_6'",Table=(TimeScale=3.000000,Values=(0.000000,0.591571,0.906891,1.000000),Op=1,EntryCount=4,EntryStride=1)))
+      DynamicParams(2)=(ParamName="WipeOff",bUseEmitterTime=True,ParamValue=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_1'",Table=(TimeScale=1.250000,Values=(0.000000,1.000000),Op=1,EntryCount=2,EntryStride=1)))
+      DynamicParams(3)=(ParamName="TexDistortionStrength",bUseEmitterTime=True,ParamValue=(MinValue=0.100000,MaxValue=0.500000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_7'",Table=(TimeScale=14.999999,Values=(0.300000,0.166667,0.114815,0.144444,0.174074,0.203704,0.233333,0.262963,0.292593,0.322222,0.351852,0.381481,0.411111,0.440741,0.470370,0.500000),Op=1,EntryCount=16,EntryStride=1)))
+      UpdateFlags=15
+      LODValidity=7
+      ModuleEditorColor=(B=199,G=137,R=0,A=255)
+   End Object
+   Begin Object Name="ParticleModuleParameterDynamic_2" ExportPath="/Script/Engine.ParticleModuleParameterDynamic'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2'"
+      Begin Object Name="DistributionFloatConstantCurve_1" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_1'"
+         ConstantCurve=(Points=((),(InVal=0.800000,OutVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_3" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_3'"
+         ConstantCurve=(Points=((ArriveTangent=-0.002946,LeaveTangent=-0.002946,InterpMode=CIM_CurveUser),(InVal=1.000000,OutVal=-0.500000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_6" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_6'"
+         ConstantCurve=(Points=((ArriveTangent=2.243218,LeaveTangent=2.243218,InterpMode=CIM_CurveUser),(InVal=1.000000,OutVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_7" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2.DistributionFloatConstantCurve_7'"
+         ConstantCurve=(Points=((OutVal=0.300000),(InVal=0.100000,OutVal=0.100000),(InVal=1.000000,OutVal=0.500000)))
+         bBakedDataSuccesfully=True
+      End Object
+      DynamicParams(0)=(ParamName="UPosition",ParamValue=(MinValue=-0.500000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_3'",Table=(TimeScale=1.000000,Values=(0.000000,-0.500000),Op=1,EntryCount=2,EntryStride=1)))
+      DynamicParams(1)=(ParamName="SecondaryPanPosition",ParamValue=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_6'",Table=(TimeScale=3.000000,Values=(0.000000,0.591571,0.906891,1.000000),Op=1,EntryCount=4,EntryStride=1)))
+      DynamicParams(2)=(ParamName="WipeOff",bUseEmitterTime=True,ParamValue=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_1'",Table=(TimeScale=1.250000,Values=(0.000000,1.000000),Op=1,EntryCount=2,EntryStride=1)))
+      DynamicParams(3)=(ParamName="TexDistortionStrength",bUseEmitterTime=True,ParamValue=(MinValue=0.100000,MaxValue=0.500000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_7'",Table=(TimeScale=14.999999,Values=(0.300000,0.166667,0.114815,0.144444,0.174074,0.203704,0.233333,0.262963,0.292593,0.322222,0.351852,0.381481,0.411111,0.440741,0.470370,0.500000),Op=1,EntryCount=16,EntryStride=1)))
+      UpdateFlags=15
+      LODValidity=7
+      ModuleEditorColor=(B=110,G=0,R=214,A=255)
+   End Object
+   Begin Object Name="ParticleModuleParameterDynamic_3" ExportPath="/Script/Engine.ParticleModuleParameterDynamic'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3'"
+      Begin Object Name="DistributionFloatConstantCurve_1" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_1'"
+         ConstantCurve=(Points=((),(InVal=0.800000,OutVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_3" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_3'"
+         ConstantCurve=(Points=((ArriveTangent=-0.002946,LeaveTangent=-0.002946,InterpMode=CIM_CurveUser),(InVal=1.000000,OutVal=-0.500000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_6" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_6'"
+         ConstantCurve=(Points=((ArriveTangent=2.243218,LeaveTangent=2.243218,InterpMode=CIM_CurveUser),(InVal=1.000000,OutVal=1.000000)))
+         bBakedDataSuccesfully=True
+      End Object
+      Begin Object Name="DistributionFloatConstantCurve_7" ExportPath="/Script/Engine.DistributionFloatConstantCurve'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3.DistributionFloatConstantCurve_7'"
+         ConstantCurve=(Points=((OutVal=0.300000),(InVal=0.100000,OutVal=0.100000),(InVal=1.000000,OutVal=0.500000)))
+         bBakedDataSuccesfully=True
+      End Object
+      DynamicParams(0)=(ParamName="UPosition",ParamValue=(MinValue=-0.500000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_3'",Table=(TimeScale=1.000000,Values=(0.000000,-0.500000),Op=1,EntryCount=2,EntryStride=1)))
+      DynamicParams(1)=(ParamName="SecondaryPanPosition",ParamValue=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_6'",Table=(TimeScale=3.000000,Values=(0.000000,0.591571,0.906891,1.000000),Op=1,EntryCount=4,EntryStride=1)))
+      DynamicParams(2)=(ParamName="WipeOff",bUseEmitterTime=True,ParamValue=(MaxValue=1.000000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_1'",Table=(TimeScale=1.250000,Values=(0.000000,1.000000),Op=1,EntryCount=2,EntryStride=1)))
+      DynamicParams(3)=(ParamName="TexDistortionStrength",bUseEmitterTime=True,ParamValue=(MinValue=0.100000,MaxValue=0.500000,Distribution="/Script/Engine.DistributionFloatConstantCurve'DistributionFloatConstantCurve_7'",Table=(TimeScale=14.999999,Values=(0.300000,0.166667,0.114815,0.144444,0.174074,0.203704,0.233333,0.262963,0.292593,0.322222,0.351852,0.381481,0.411111,0.440741,0.470370,0.500000),Op=1,EntryCount=16,EntryStride=1)))
+      UpdateFlags=15
+      LODValidity=7
+      ModuleEditorColor=(B=182,G=161,R=0,A=255)
+   End Object
+   Begin Object Name="InterpCurveEdSetup_0" ExportPath="/Script/Engine.InterpCurveEdSetup'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:InterpCurveEdSetup_0'"
+      Tabs(0)=(Curves=((CurveObject="/Script/Engine.DistributionVectorConstantCurve'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2.DistributionVectorConstantCurve_0'",CurveColor=(B=208,G=0,R=124,A=255),CurveName="ColorScaleOverLife",bColorCurve=1,bFloatingPointColorCurve=1),(CurveObject="/Script/Engine.DistributionFloatConstantCurve'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2.DistributionFloatConstantCurve_0'",CurveColor=(B=208,G=0,R=124,A=255),CurveName="AlphaScaleOverLife",bHideCurve=1,bColorCurve=1,bFloatingPointColorCurve=1)),ViewStartInput=-0.100000,ViewEndInput=1.100000,ViewStartOutput=-0.100000,ViewEndOutput=1.100000)
+   End Object
+   Begin Object Name="ParticleSpriteEmitter_0" ExportPath="/Script/Engine.ParticleSpriteEmitter'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0'"
+      Begin Object Name="ParticleLODLevel_0" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0.ParticleLODLevel_0'"
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_0'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_0'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_0'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0'"
+         Begin Object Name="ParticleModuleTypeDataAnimTrail_0" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_0'"
+            bTangentRecalculationEveryFrame=True
+            TilingDistance=850.000000
+            LODValidity=7
+            ModuleEditorColor=(B=0,G=195,R=144,A=255)
+         End Object
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_0'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_0'"
+         PeakActiveParticles=19
+      End Object
+      Begin Object Name="ParticleLODLevel_1" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0.ParticleLODLevel_1'"
+         Level=1
+         bEnabled=False
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_0'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_0'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_0'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0'"
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_0'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_0'"
+         PeakActiveParticles=1
+      End Object
+      Begin Object Name="ParticleLODLevel_2" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_0.ParticleLODLevel_2'"
+         Level=2
+         bEnabled=False
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_0'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_0'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_0'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_0'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_0'"
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_0'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_0'"
+         PeakActiveParticles=1
+      End Object
+      EmitterName="DarkFire"
+      bUseLegacySpawningBehavior=True
+      EmitterEditorColor=(B=172,G=0,R=173,A=255)
+      LODLevels(0)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_0'"
+      LODLevels(1)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_1'"
+      LODLevels(2)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_2'"
+   End Object
+   Begin Object Name="ParticleSpriteEmitter_2" ExportPath="/Script/Engine.ParticleSpriteEmitter'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2'"
+      Begin Object Name="ParticleLODLevel_0" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2.ParticleLODLevel_0'"
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_2'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2'"
+         Begin Object Name="ParticleModuleTypeDataAnimTrail_4" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_4'"
+            bTangentRecalculationEveryFrame=True
+            TilingDistance=850.000000
+            LODValidity=7
+            ModuleEditorColor=(B=188,G=153,R=0,A=255)
+         End Object
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_4'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_1'"
+         PeakActiveParticles=24
+      End Object
+      Begin Object Name="ParticleLODLevel_1" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2.ParticleLODLevel_1'"
+         Level=1
+         bEnabled=False
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_2'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2'"
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_4'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_1'"
+         PeakActiveParticles=1
+      End Object
+      Begin Object Name="ParticleLODLevel_2" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_2.ParticleLODLevel_2'"
+         Level=2
+         bEnabled=False
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_2'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_2'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_2'"
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_4'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_1'"
+         PeakActiveParticles=1
+      End Object
+      EmitterName="FireEdgeClose"
+      bUseLegacySpawningBehavior=True
+      EmitterEditorColor=(B=206,G=0,R=127,A=255)
+      LODLevels(0)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_0'"
+      LODLevels(1)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_1'"
+      LODLevels(2)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_2'"
+   End Object
+   Begin Object Name="ParticleSpriteEmitter_4" ExportPath="/Script/Engine.ParticleSpriteEmitter'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4'"
+      Begin Object Name="ParticleLODLevel_3" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4.ParticleLODLevel_3'"
+         bEnabled=False
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_4'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3'"
+         Begin Object Name="ParticleModuleTypeDataAnimTrail_5" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_5'"
+            bTangentRecalculationEveryFrame=True
+            TilingDistance=850.000000
+            DistanceTessellationStepSize=150.000000
+            LODValidity=7
+            ModuleEditorColor=(B=0,G=199,R=137,A=255)
+         End Object
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_5'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_4'"
+         PeakActiveParticles=29
+      End Object
+      Begin Object Name="ParticleLODLevel_4" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4.ParticleLODLevel_4'"
+         Level=1
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_4'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3'"
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_5'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_4'"
+         PeakActiveParticles=1
+      End Object
+      Begin Object Name="ParticleLODLevel_5" ExportPath="/Script/Engine.ParticleLODLevel'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleSpriteEmitter_4.ParticleLODLevel_5'"
+         Level=2
+         bEnabled=False
+         RequiredModule="/Script/Engine.ParticleModuleRequired'P_MeleeTrails_Ultimate:ParticleModuleRequired_4'"
+         Modules(0)="/Script/Engine.ParticleModuleLifetime'P_MeleeTrails_Ultimate:ParticleModuleLifetime_5'"
+         Modules(1)="/Script/Engine.ParticleModuleColor'P_MeleeTrails_Ultimate:ParticleModuleColor_2'"
+         Modules(2)="/Script/Engine.ParticleModuleColorScaleOverLife'P_MeleeTrails_Ultimate:ParticleModuleColorScaleOverLife_4'"
+         Modules(3)="/Script/Engine.ParticleModuleParameterDynamic'P_MeleeTrails_Ultimate:ParticleModuleParameterDynamic_3'"
+         TypeDataModule="/Script/Engine.ParticleModuleTypeDataAnimTrail'P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_5'"
+         SpawnModule="/Script/Engine.ParticleModuleSpawn'P_MeleeTrails_Ultimate:ParticleModuleSpawn_4'"
+         PeakActiveParticles=1
+      End Object
+      EmitterName="FireEdgeFar"
+      bUseLegacySpawningBehavior=True
+      EmitterEditorColor=(B=0,G=113,R=212,A=255)
+      LODLevels(0)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_3'"
+      LODLevels(1)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_4'"
+      LODLevels(2)="/Script/Engine.ParticleLODLevel'ParticleLODLevel_5'"
+   End Object
+   Begin Object Name="ParticleModuleTypeDataAnimTrail_0" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_0'"
+      bTangentRecalculationEveryFrame=True
+      TilingDistance=850.000000
+      LODValidity=7
+      ModuleEditorColor=(B=0,G=195,R=144,A=255)
+   End Object
+   Begin Object Name="ParticleModuleTypeDataAnimTrail_4" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_4'"
+      bTangentRecalculationEveryFrame=True
+      TilingDistance=850.000000
+      LODValidity=7
+      ModuleEditorColor=(B=188,G=153,R=0,A=255)
+   End Object
+   Begin Object Name="ParticleModuleTypeDataAnimTrail_5" ExportPath="/Script/Engine.ParticleModuleTypeDataAnimTrail'/Game/ParagonGrux/FX/Particles/Abilities/Ultimate/FX/P_MeleeTrails_Ultimate.P_MeleeTrails_Ultimate:ParticleModuleTypeDataAnimTrail_5'"
+      bTangentRecalculationEveryFrame=True
+      TilingDistance=850.000000
+      DistanceTessellationStepSize=150.000000
+      LODValidity=7
+      ModuleEditorColor=(B=0,G=199,R=137,A=255)
+   End Object
+   Emitters(0)="/Script/Engine.ParticleSpriteEmitter'ParticleSpriteEmitter_0'"
+   Emitters(1)="/Script/Engine.ParticleSpriteEmitter'ParticleSpriteEmitter_2'"
+   Emitters(2)="/Script/Engine.ParticleSpriteEmitter'ParticleSpriteEmitter_4'"
+   CurveEdSetup="/Script/Engine.InterpCurveEdSetup'InterpCurveEdSetup_0'"
+   LODDistances(0)=0.000000
+   LODDistances(1)=1000.000000
+   LODDistances(2)=2000.000000
+   LODSettings(2)=()
+   FixedRelativeBoundingBox=(Min=(X=-600.000000,Y=-600.000000,Z=-600.000000),Max=(X=600.000000,Y=600.000000,Z=600.000000),IsValid=True)
+   bUseFixedRelativeBoundingBox=True
+   bShouldResetPeakCounts=True
+   CustomOcclusionBounds=(Min=(X=0.000000,Y=0.000000,Z=0.000000),Max=(X=0.000000,Y=0.000000,Z=0.000000),IsValid=True)
+End Object
