@@ -43,7 +43,6 @@ void AChainLightningAbility::PerformSphereTrace()
             if (bHit)
             {
                 TArray<AActor*> ValidTargets;
-                GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("Found %d overlaps"), OverlapResults.Num()));
 
                 for (auto& Result : OverlapResults)
                 {

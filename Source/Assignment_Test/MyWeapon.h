@@ -30,6 +30,8 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Properties", meta = (AllowPrivateAccess = "true"))
 	class UBoxComponent* WeaponCollisionBox;
 
+	int32 PlayerToEnemyDamageValue = 100;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

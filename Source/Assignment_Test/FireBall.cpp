@@ -49,7 +49,7 @@ void AFireBall::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Othe
 	auto Enemy = Cast<AMyEnemy>(OtherActor);
 	if (Enemy)
 	{
-		Enemy->GetHit();
+		Enemy->GetHit(100);
 		Destroy();
 	}
 	

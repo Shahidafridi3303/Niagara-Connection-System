@@ -20,8 +20,8 @@
 
 // Sets default values
 AMyEnemy::AMyEnemy() :
-	Health(100.f),
-	MaxHealth(100.f),
+	Health(1000.f),
+	MaxHealth(1000.f),
 	bStunned(false),
 	SelfDamageValue(20.f),
 	bDying(false)
@@ -174,31 +174,44 @@ void AMyEnemy::CombatRangeEndOverlap(UPrimitiveComponent* OverlappedComponent, A
 	}
 }
 
-void AMyEnemy::GetHit()
+void AMyEnemy::GetHit(int32 DamageValue)
 {
-	if (bDying) return;
-
-	if (Health - SelfDamageValue <= 0.f)
-	{
-		Health = 0.f;
-		Die();
-	}
-	else
-	{
-		Health -= SelfDamageValue;
-
-		if (ImpactSound)
+	FTimerHandle TimerHandle2;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle2, [this, DamageValue]()
 		{
-			UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation());
-		}
+			PlayerCharacter = Cast<AMyCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
-		PlayHitMontage();
-		SetStunned(true);
-	}
-	if (ImpactPaticles)
-	{
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactPaticles, GetActorLocation(), FRotator(0.f), true);
-	}
+			if (PlayerCharacter)
+			{
+				// Call AddToChain on the player character to increment the chain count
+				PlayerCharacter->AddToChain();
+			}
+
+			if (bDying) return;
+
+			if (Health - DamageValue <= 0.f)
+			{
+				Health = 0.f;
+				Die();
+			}
+			else
+			{
+				Health -= DamageValue;
+
+				if (ImpactSound)
+				{
+					UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation());
+				}
+
+				PlayHitMontage();
+				SetStunned(true);
+			}
+			if (ImpactPaticles)
+			{
+				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactPaticles, GetActorLocation(), FRotator(0.f), true);
+			}
+			
+		}, ChainDelay, false);
 }
 
 FName AMyEnemy::GetRandomAttackSectionName()
@@ -270,15 +283,14 @@ void AMyEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
-
-
 //// ***** Niagara connection **** /////
+
+
 void AMyEnemy::PerformSphereTrace()
 {
 	// Ensure we don't process again if already done or currently processing
 	if (bHasPerformedSphereTrace || bIsProcessing)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Already processed or currently processing, returning."));
 		return;
 	}
 
@@ -287,9 +299,6 @@ void AMyEnemy::PerformSphereTrace()
 
 	// Disable capsule collision for this enemy to prevent it from being considered in subsequent traces
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-
-	// Debug: Performing sphere trace
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Performing sphere trace"));
 
 	// Delay execution of the sphere trace by 1 second
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
@@ -320,10 +329,6 @@ void AMyEnemy::PerformSphereTrace()
 				{
 					HandleOverlappingActors(ValidTargets);
 				}
-				else
-				{
-					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No valid enemies found in range"));
-				}
 			}
 			else
 			{
@@ -334,7 +339,7 @@ void AMyEnemy::PerformSphereTrace()
 			//AgroSphere()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 			// Reset trace state
-		}, 1, false);
+		}, ChainDelay, false);
 }
 
 void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
@@ -342,7 +347,6 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 	if (ValidTargets.Num() == 0)
 	{
 		bIsProcessing = false;  // Reset processing flag
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No valid targets to handle."));
 		return;
 	}
 
@@ -406,26 +410,22 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 		if (ChainTarget && !ChainTarget->bHasPerformedSphereTrace)
 		{
 			// Debug: Ensure we're triggering the next trace
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Chaining to next enemy"));
 
 			// Reset state for the next enemy (bHasPerformedSphereTrace should be false to allow it to perform trace)
 			ChainTarget->bHasPerformedSphereTrace = false;  // Ensure it's ready for the next trace
 
 			// Debug: Check if the next trace is being scheduled
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, TEXT("Scheduling next trace for the next enemy"));
 
-			ChainTarget->PerformSphereTrace();  // Trigger next trace
+			ChainTarget->PerformSphereTrace();
+			ChainTarget->GetHit(10);
+			// Trigger next trace
 		}
-		else
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, TEXT("Cannot chain to next enemy (either already traced or not valid)"));
-		}
+		
 	}
 
 	// Reset the flags after the effect is performed
 	bIsProcessing = false;  // Reset processing flag
 	bHasPerformedSphereTrace = true;  // Mark this enemy as having performed the trace
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Finished processing and marking as completed"));
 }
 
 
@@ -461,4 +461,21 @@ void AMyEnemy::Tick(float DeltaTime)
 			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
 		}
 	}
+}
+
+//float AMyEnemy::CalculateChainDamage(int32 ChainIndex, EDecayModel DecayModel, float InitialDamage, float DecayFactor, float MinimumDamage, float ReductionPerChain)
+//{
+//	switch (DecayModel)
+//	{
+//	case EDecayModel::Logarithmic:
+//		return InitialDamage / FMath::Log2(ChainIndex + 2);
+//	case EDecayModel::Exponential:
+//		return FMath::Max(InitialDamage * FMath::Pow(DecayFactor, ChainIndex - 1), MinimumDamage);
+//	case EDecayModel::Linear:
+//		return FMath::Max(InitialDamage - (ReductionPerChain * (ChainIndex - 1)), MinimumDamage);
+//	case EDecayModel::Randomized:
+//		return FMath::Max(InitialDamage * FMath::Pow(DecayFactor, ChainIndex - 1) * FMath::FRandRange(0.8f, 1.2f), MinimumDamage);
+//	default:
+//		return InitialDamage;
+//	}
 }

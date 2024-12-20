@@ -112,6 +112,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//float CalculateChainDamage(int32 ChainIndex, EDecayModel DecayModel, float InitialDamage, float DecayFactor, float MinimumDamage, float ReductionPerChain);
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Properties", meta = (AllowPrivateAccess = "true"))
 	float SelfDamageValue;
 
@@ -121,7 +123,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void GetHit();
+	void GetHit(int32 DamageValue);
 
 	FORCEINLINE UBehaviorTree* GetBehaviorTree() const { return BehaviorTree; }
 
@@ -159,4 +161,8 @@ private:
 	bool bIsInterpolating;
 
 	AMyEnemy* NextEnemy;
+
+	int32 ChainDelay = 1;
+
+	class AMyCharacter* PlayerCharacter;
 };

@@ -246,13 +246,7 @@ void AMyCharacter::ActivateChainLightning()
 			if (HitActor)
 			{
 				// Debug visuals
-				DrawDebugLine(GetWorld(), StartLocation, HitResult.Location, FColor::Green, false, 2.0f, 0, 2.0f);
 				DrawDebugSphere(GetWorld(), HitResult.Location, 50.0f, 12, FColor::Blue, false, 2.0f);
-
-				// On-screen messages
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Hit Actor: %s"), *HitActor->GetName()));
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Start: %s, End: %s"), *StartLocation.ToString(), *HitResult.Location.ToString()));
-
 				// Check if the hit actor is a ChainLightningAbility actor
 				AChainLightningAbility* HitChainLightning = Cast<AChainLightningAbility>(HitActor);
 				if (HitChainLightning)
@@ -265,6 +259,7 @@ void AMyCharacter::ActivateChainLightning()
 				if (HitEnemy)
 				{
 					HitEnemy->PerformSphereTrace();
+					HitEnemy->GetHit(LighteningFactor);
 					NextEnemy = Cast<AMyEnemy>(HitEnemy);
 				}
 			}
@@ -273,9 +268,6 @@ void AMyCharacter::ActivateChainLightning()
 		{
 			// Debug Line (No Hit)
 			DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Red, false, 2.0f, 0, 2.0f);
-
-			// On-screen message for no hit
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No Hit Detected."));
 		}
 	}
 }
@@ -315,14 +307,7 @@ void AMyCharacter::InteractButtonPressed()
 
 void AMyCharacter::FinishDeath()
 {
-	GetMesh()->bPauseAnims = true;
-	APlayerController* PC = UGameplayStatics::GetPlayerController(this, 0);
-	if (PC)
-	{
-		DisableInput(PC);
-	}
-	
-	UGameplayStatics::SetGamePaused(GetWorld(), true);
+	// die logic
 }
 
 void AMyCharacter::GetHit()
@@ -439,4 +424,11 @@ void AMyCharacter::Die()
 	}
 }
 
+void AMyCharacter::AddToChain()
+{
+    // Increment the chain count when a chain event happens
+    ChainCount++;
+    // Optionally, log for debugging
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("ChainCount: %d"), ChainCount));
+}
 

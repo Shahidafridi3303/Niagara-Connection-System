@@ -38,7 +38,7 @@ void AMyWeapon::OnWeaponOverlap(UPrimitiveComponent* OverlappedComponent, AActor
 	auto MyEnemy = Cast<AMyEnemy>(OtherActor);
 	if (MyEnemy)
 	{
-		MyEnemy->GetHit();
+		MyEnemy->GetHit(PlayerToEnemyDamageValue);
 	}
 }
 

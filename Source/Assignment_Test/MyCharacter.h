@@ -171,11 +171,10 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	UAnimMontage* DeathMontage;
 
+public:
 	UFUNCTION(BlueprintCallable)
 	void FinishDeath();
 
-
-public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	FString QTEWidgetDisplayText;
 
@@ -206,4 +205,18 @@ public:
 	class AMyEnemy* NextEnemy;
 
 	class UNiagaraComponent* NiagaraComp;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
+	float LighteningFactor = 750;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
+	float ChainDamageFactor = 10;
+
+	// Integer variable to store the chain count
+	UPROPERTY(BlueprintReadWrite, Category = "Chain")
+	int32 ChainCount;
+
+	// Function to update the chain count
+	UFUNCTION(BlueprintCallable, Category = "Chain")
+	void AddToChain();
 };
