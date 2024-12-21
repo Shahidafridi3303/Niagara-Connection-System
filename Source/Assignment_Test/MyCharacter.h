@@ -200,6 +200,7 @@ public:
 	UNiagaraSystem* LightningEffect;
 
 	void ActivateChainLightning();
+	void AutoDeactivateNiagara();
 	void ResetChainLightning();
 	void DeactivateNiagaraAndEnableCollision();
 	bool GetCameraTrace(FVector& OutStart, FVector& OutEnd);

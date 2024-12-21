@@ -293,7 +293,7 @@ void AMyEnemy::PerformSphereTrace()
 	FTimerHandle TimerHandle;
 
 	// Disable capsule collision for this enemy to prevent it from being considered in subsequent traces
-	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility,ECR_Ignore);
 
 	// Delay execution of the sphere trace by 1 second
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
@@ -362,11 +362,9 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No visible nearest actor found"));
 		if (PlayerCharacter)
 		{
 			PlayerCharacter->ResetChainLightning();
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Chain Lightning Reset Triggered."));
 		}
 	}
 }

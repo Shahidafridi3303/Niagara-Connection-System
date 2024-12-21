@@ -213,6 +213,9 @@ void AMyCharacter::ActivateChainLightning()
 	if (GetCameraTrace(StartLocation, EndLocation))
 	{
 		FHitResult HitResult;
+		bool bHitValidTarget = false;
+
+		// Perform the line trace
 		if (GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility))
 		{
 			AActor* HitActor = HitResult.GetActor();
@@ -220,12 +223,13 @@ void AMyCharacter::ActivateChainLightning()
 			{
 				// Debug visuals
 				DrawDebugSphere(GetWorld(), HitResult.Location, 50.0f, 12, FColor::Blue, false, 2.0f);
+
 				// Check if the hit actor is a ChainLightningAbility actor
 				AChainLightningAbility* HitChainLightning = Cast<AChainLightningAbility>(HitActor);
 				if (HitChainLightning)
 				{
-					// Trigger the chain lightning effect recursively
-					HitChainLightning->PerformSphereTrace(); // This will call the sphere trace on the hit actor
+					HitChainLightning->PerformSphereTrace(); // Trigger the sphere trace on the hit actor
+					bHitValidTarget = true;
 				}
 
 				AMyEnemy* HitEnemy = Cast<AMyEnemy>(HitActor);
@@ -234,23 +238,20 @@ void AMyCharacter::ActivateChainLightning()
 					HitEnemy->PerformSphereTrace();
 					HitEnemy->ApplyLightningDamage();
 					NextEnemy = Cast<AMyEnemy>(HitEnemy);
+					bHitValidTarget = true;
 				}
 			}
 		}
 
-		// Spawn lightning effect at the hit location
+		// Spawn lightning effect at the player's location
 		if (LightningEffect)
 		{
-			// Get the location of the character's feet (mesh location)
-			FVector FootLocation = GetMesh()->GetSocketLocation(TEXT("FootSocket")); // You can replace "FootSocket" with an actual socket name if needed
+			FVector FootLocation = GetMesh()->GetSocketLocation(TEXT("FootSocket"));
+			FVector OffsetLocation = FootLocation + FVector(0.f, 0.f, 100.f);
 
-			// Add an offset to the Z location (for example, 100 units above the feet)
-			FVector OffsetLocation = FootLocation + FVector(0.f, 0.f, 100.f); // Adjust the Z value as needed
-
-			// Attach Niagara to player with the offset location
 			NiagaraComp = UNiagaraFunctionLibrary::SpawnSystemAttached(
 				LightningEffect,
-				GetMesh(), // Attach to the player's mesh
+				GetMesh(),
 				NAME_None,
 				FVector::ZeroVector,
 				FRotator::ZeroRotator,
@@ -260,31 +261,63 @@ void AMyCharacter::ActivateChainLightning()
 
 			if (NiagaraComp)
 			{
-				// Update the end location of the lightning effect
 				NiagaraComp->SetNiagaraVariableVec3(TEXT("User.End"), EndLocation);
-				NiagaraComp->SetWorldLocation(OffsetLocation); // Set the Niagara effect position to the offset location
+				NiagaraComp->SetWorldLocation(OffsetLocation);
 			}
+		}
+
+		// If no valid target is hit, schedule deactivation
+		if (!bHitValidTarget && NiagaraComp && NiagaraComp->IsActive())
+		{
+			FTimerHandle DeactivateTimerHandle;
+			GetWorld()->GetTimerManager().SetTimer(
+				DeactivateTimerHandle,
+				[this]()
+				{
+					if (NiagaraComp)
+					{
+						NiagaraComp->Deactivate();
+						GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("Deactivating Niagara after 1 second (no valid target)."));
+					}
+				},
+				1.0f,
+				false // Do not loop
+			);
 		}
 	}
 }
 
+
 void AMyCharacter::ResetChainLightning()
 {
-    for (AMyEnemy* Enemy : AffectedEnemies)
-    {
-        if (Enemy && Enemy->NiagaraComponent)
-        {
-            Enemy->NiagaraComponent->Deactivate();
-			Enemy->GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-        }
-    }
+	for (AMyEnemy* Enemy : AffectedEnemies)
+	{
+		if (Enemy)
+		{
+			if (Enemy->NiagaraComponent)
+			{
+				Enemy->NiagaraComponent->Deactivate();
+			}
+			Enemy->GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+			Enemy->bHasPerformedSphereTrace = false;  // Reset trace flag
+			Enemy->bIsProcessing = false;            // Reset processing flag
+		}
+	}
 
-	NiagaraComp->Deactivate();
-    AffectedEnemies.Empty(); // Clear the array
+	if (NiagaraComp)
+	{
+		NiagaraComp->Deactivate();
+	}
+	NextEnemy = nullptr;
+	AffectedEnemies.Empty(); // Clear the array
 
-    // Add an on-screen debug message
-    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, TEXT("Chain Lightning Reset"));
+	// Reset chain-related variables
+	ChainCount = 0;
+
+	// Debug message
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, TEXT("Chain Lightning Reset"));
 }
+
 
 bool AMyCharacter::GetCameraTrace(FVector& OutStart, FVector& OutEnd)
 {
