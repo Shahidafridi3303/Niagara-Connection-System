@@ -289,13 +289,13 @@ void AMyEnemy::PerformSphereTrace()
 		return;
 	}
 
-	bIsProcessing = true;  // Mark as processing
+	bIsProcessing = true; // Mark as processing
 	FTimerHandle TimerHandle;
 
 	// Disable capsule collision for this enemy to prevent it from being considered in subsequent traces
-	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility,ECR_Ignore);
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
 
-	// Delay execution of the sphere trace by 1 second
+	// Delay execution of the sphere trace by ChainDelay seconds
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
 		{
 			FVector StartLocation = GetActorLocation();
@@ -332,7 +332,7 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 {
 	if (ValidTargets.Num() == 0)
 	{
-		bIsProcessing = false;  // Reset processing flag
+		bIsProcessing = false; // Reset processing flag
 		return;
 	}
 
@@ -395,29 +395,20 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 		}
 	}
 
-	// Debug: Check if the actor is of type AMyEnemy
 	if (TargetActor->IsA(AMyEnemy::StaticClass()))
 	{
 		AMyEnemy* ChainTarget = Cast<AMyEnemy>(TargetActor);
 		if (ChainTarget && !ChainTarget->bHasPerformedSphereTrace)
 		{
-			// Debug: Ensure we're triggering the next trace
-
-			// Reset state for the next enemy (bHasPerformedSphereTrace should be false to allow it to perform trace)
-			ChainTarget->bHasPerformedSphereTrace = false;  // Ensure it's ready for the next trace
-
-			// Debug: Check if the next trace is being scheduled
-
+			ChainTarget->bHasPerformedSphereTrace = false; // Reset state for next trace
 			ChainTarget->PerformSphereTrace();
 			ChainTarget->ApplyLightningDamage();
-			// Trigger next trace
 		}
-		
 	}
 
-	// Reset the flags after the effect is performed
-	bIsProcessing = false;  // Reset processing flag
-	bHasPerformedSphereTrace = true;  // Mark this enemy as having performed the trace
+	// Reset flags after the effect is performed
+	bIsProcessing = false;
+	bHasPerformedSphereTrace = true;
 }
 
 bool AMyEnemy::IsLineOfSightClear(AActor* PotentialTarget)
@@ -432,24 +423,14 @@ bool AMyEnemy::IsLineOfSightClear(AActor* PotentialTarget)
 	QueryParams.AddIgnoredActor(this);           // Ignore self
 	QueryParams.AddIgnoredActor(PotentialTarget); // Ignore the target actor
 
-	// Perform the line trace
-	bool bHit = GetWorld()->LineTraceSingleByChannel(
-		HitResult,
-		Start,
-		End,
-		ECC_Visibility,
-		QueryParams
-	);
+	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_Visibility, QueryParams);
 
-	// Visualize the line trace (Debug purposes)
+	// Visualize the line trace
 	FColor LineColor = bHit ? FColor::Red : FColor::Green;
 	DrawDebugLine(GetWorld(), Start, End, LineColor, false, 1.f, 0, 2.f);
 
-	// If we hit something, ensure it's not an obstruction
 	return !bHit || HitResult.GetActor() == PotentialTarget;
-
 }
-
 
 void AMyEnemy::Tick(float DeltaTime)
 {
@@ -459,28 +440,24 @@ void AMyEnemy::Tick(float DeltaTime)
 	{
 		ElapsedTime += DeltaTime;
 
-		// Calculate new end location based on interpolation
 		if (ElapsedTime < InterpolationTime)
 		{
-			// Interpolate between the start and target location
 			FVector NewEndLocation = FMath::Lerp(StartLocation, TargetLocation, ElapsedTime / InterpolationTime);
 			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NewEndLocation);
 		}
 		else
 		{
-			// Set the final target location
 			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), TargetLocation);
 			bIsInterpolating = false;
 		}
 	}
 
-	// Always update the Niagara effect to follow the enemy's position
 	if (NiagaraComponent)
 	{
-		NiagaraComponent->SetWorldLocation(GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
+		NiagaraComponent->SetWorldLocation(GetActorLocation() + FVector(0.f, 0.f, 10.f));
 		if (NextEnemy)
 		{
-			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
+			NiagaraComponent->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f));
 		}
 	}
 }
@@ -493,19 +470,13 @@ void AMyEnemy::ApplyLightningDamage()
 		return;
 	}
 
-	// Current enemy index in the chain
 	int32 EnemyIndex = PlayerCharacter->ChainCount;
-
-	// Damage calculation logic
 	float Damage = InitialDamage * FMath::Pow(DecayFactor, EnemyIndex);
 
-	// Apply damage to the enemy
 	GetHit(Damage);
 
-	// Increment the enemy count in the player's chain
 	PlayerCharacter->AddToChain();
 	PlayerCharacter->AffectedEnemies.Add(this);
 
-	// Log damage for debugging
-	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Yellow,FString::Printf(TEXT("Enemy %d takes %f damage"), EnemyIndex + 1, Damage));
+	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Yellow, FString::Printf(TEXT("Enemy %d takes %f damage"), EnemyIndex + 1, Damage));
 }

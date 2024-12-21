@@ -207,6 +207,11 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void AMyCharacter::ActivateChainLightning()
 {
+	if (!bCanUseNiagara)
+	{
+		return;  // Return early if the cooldown is active
+	}
+
 	FVector StartLocation, EndLocation;
 
 	// Perform line trace from the camera
@@ -266,9 +271,17 @@ void AMyCharacter::ActivateChainLightning()
 			}
 		}
 
+		if (bHitValidTarget)
+		{
+			// Set a timer to reset the cooldown after CooldownTime seconds
+			GetWorld()->GetTimerManager().SetTimer(NiagaraCooldownTimerHandle, this, &AMyCharacter::ResetNiagaraCooldown, CooldownTime, false);
+		}
+
 		// If no valid target is hit, schedule deactivation
 		if (!bHitValidTarget && NiagaraComp && NiagaraComp->IsActive())
 		{
+			bCanUseNiagara = false;
+
 			FTimerHandle DeactivateTimerHandle;
 			GetWorld()->GetTimerManager().SetTimer(
 				DeactivateTimerHandle,
@@ -276,6 +289,7 @@ void AMyCharacter::ActivateChainLightning()
 				{
 					if (NiagaraComp)
 					{
+						bCanUseNiagara = true;
 						NiagaraComp->Deactivate();
 						GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("Deactivating Niagara after 1 second (no valid target)."));
 					}
@@ -287,6 +301,10 @@ void AMyCharacter::ActivateChainLightning()
 	}
 }
 
+void AMyCharacter::ResetNiagaraCooldown()
+{
+	bCanUseNiagara = true;  // Cooldown is over, allow Niagara to be triggered again
+}
 
 void AMyCharacter::ResetChainLightning()
 {

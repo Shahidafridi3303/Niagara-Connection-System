@@ -200,6 +200,7 @@ public:
 	UNiagaraSystem* LightningEffect;
 
 	void ActivateChainLightning();
+	void ResetNiagaraCooldown();
 	void AutoDeactivateNiagara();
 	void ResetChainLightning();
 	void DeactivateNiagaraAndEnableCollision();
@@ -219,5 +220,11 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Chain Lightning")
 	TArray<AMyEnemy*> AffectedEnemies;
+
+	bool bCanUseNiagara = true;  // Flag to check if Niagara can be triggered
+	FTimerHandle NiagaraCooldownTimerHandle;  // Timer to manage cooldown
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
+	float CooldownTime = 5.0f;  // Cooldown period in seconds (5 seconds)
 
 };
