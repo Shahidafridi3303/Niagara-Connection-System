@@ -69,6 +69,7 @@ void AMyCharacter::BeginPlay()
 
 	GetCharacterMovement()->MaxWalkSpeed = BaseMovementSpeed;
 	EquipWeapon(SpawnDefaultWeapon());
+	CurrentCooldownTime = CooldownTime;
 }
 
 void AMyCharacter::MoveForward(float Value)
@@ -170,16 +171,6 @@ void AMyCharacter::EquipWeapon(AMyWeapon* WeaponToEquip)
 	}
 }
 
-// Called every frame
-void AMyCharacter::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-	if (NextEnemy)
-	{
-		NiagaraComp->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
-	}
-}
 
 // Called to bind functionality to input
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -203,6 +194,35 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AMyCharacter::FireButtonPressed);
 
 	PlayerInputComponent->BindAction("Interact", IE_Pressed, this, &AMyCharacter::InteractButtonPressed);
+}
+
+
+// Called every frame
+void AMyCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (NextEnemy)
+	{
+		NiagaraComp->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
+	}
+
+	if (bCanUseNiagara == false)
+	{
+		CurrentCooldownTime -= DeltaTime; // Subtract DeltaTime for milliseconds precision
+
+		// If cooldown is finished, reset everything
+		if (CurrentCooldownTime <= 0.0f)
+		{
+			CurrentCooldownTime = 0.0f;
+
+			// Optionally notify the player that the ability is ready again
+			UE_LOG(LogTemp, Warning, TEXT("Ability is ready!"));
+		}
+
+		// Map CurrentCooldownTime from range [0, CooldownTime] to [0, 1]
+		CooldownProgress = FMath::GetMappedRangeValueClamped(FVector2D(0.0f, CooldownTime), FVector2D(1.0f, 0.0f), CurrentCooldownTime);
+	}
 }
 
 void AMyCharacter::ActivateChainLightning()
@@ -273,6 +293,7 @@ void AMyCharacter::ActivateChainLightning()
 
 		if (bHitValidTarget)
 		{
+			bCanUseNiagara = false;
 			// Set a timer to reset the cooldown after CooldownTime seconds
 			GetWorld()->GetTimerManager().SetTimer(NiagaraCooldownTimerHandle, this, &AMyCharacter::ResetNiagaraCooldown, CooldownTime, false);
 		}
@@ -304,6 +325,7 @@ void AMyCharacter::ActivateChainLightning()
 void AMyCharacter::ResetNiagaraCooldown()
 {
 	bCanUseNiagara = true;  // Cooldown is over, allow Niagara to be triggered again
+	CurrentCooldownTime = CooldownTime; // Reset cooldown time to initial value
 }
 
 void AMyCharacter::ResetChainLightning()
