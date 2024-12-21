@@ -175,4 +175,18 @@ private:
 	int32 ChainDelay = 1;
 
 	class AMyCharacter* PlayerCharacter;
+
+	public:
+		// Function to validate if there's a clear line of sight to the target
+		bool IsLineOfSightClear(AActor* PotentialTarget);
+
+private:
+	// Debug visualization toggle for line traces
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug", meta = (AllowPrivateAccess = "true"))
+	bool bShowLineTrace = true;
+
+	// Line trace parameters
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Line Trace", meta = (AllowPrivateAccess = "true"))
+	float TraceHeightOffset = 50.f; // Offset from the ground for the trace
+
 };

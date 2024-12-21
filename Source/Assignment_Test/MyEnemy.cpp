@@ -348,14 +348,17 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 	AActor* NearestActor = nullptr;
 	float MinDistance = FLT_MAX;
 
-	// Find the closest target
+	// Find the closest target with a clear line of sight
 	for (AActor* Target : ValidTargets)
 	{
-		float Distance = FVector::Dist(GetActorLocation(), Target->GetActorLocation());
-		if (Distance < MinDistance)
+		if (IsLineOfSightClear(Target)) // Check if there is no obstruction
 		{
-			MinDistance = Distance;
-			NearestActor = Target;
+			float Distance = FVector::Dist(GetActorLocation(), Target->GetActorLocation());
+			if (Distance < MinDistance)
+			{
+				MinDistance = Distance;
+				NearestActor = Target;
+			}
 		}
 	}
 
@@ -368,7 +371,7 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No nearest actor found"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No visible nearest actor found"));
 	}
 }
 
@@ -421,6 +424,36 @@ void AMyEnemy::PerformNiagaraEffect(AActor* TargetActor)
 	// Reset the flags after the effect is performed
 	bIsProcessing = false;  // Reset processing flag
 	bHasPerformedSphereTrace = true;  // Mark this enemy as having performed the trace
+}
+
+bool AMyEnemy::IsLineOfSightClear(AActor* PotentialTarget)
+{
+	if (!PotentialTarget) return false;
+
+	FVector Start = GetActorLocation() + FVector(0.f, 0.f, 50.f); // Slight offset for height
+	FVector End = PotentialTarget->GetActorLocation() + FVector(0.f, 0.f, 50.f);
+
+	FHitResult HitResult;
+	FCollisionQueryParams QueryParams;
+	QueryParams.AddIgnoredActor(this);           // Ignore self
+	QueryParams.AddIgnoredActor(PotentialTarget); // Ignore the target actor
+
+	// Perform the line trace
+	bool bHit = GetWorld()->LineTraceSingleByChannel(
+		HitResult,
+		Start,
+		End,
+		ECC_Visibility,
+		QueryParams
+	);
+
+	// Visualize the line trace (Debug purposes)
+	FColor LineColor = bHit ? FColor::Red : FColor::Green;
+	DrawDebugLine(GetWorld(), Start, End, LineColor, false, 1.f, 0, 2.f);
+
+	// If we hit something, ensure it's not an obstruction
+	return !bHit || HitResult.GetActor() == PotentialTarget;
+
 }
 
 
