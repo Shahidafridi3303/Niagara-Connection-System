@@ -132,6 +132,7 @@ public:
 	/// ******  Niagara conenction system  ****///
 
 	void PerformSphereTrace();
+	void DeactivateNiagaraAndEnableCollision();
 	void HandleOverlappingActors(const TArray<AActor*>& ValidTargets);
 	void PerformNiagaraEffect(AActor* TargetActor);
 	void ResetCollision();
@@ -160,14 +161,11 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
 	int32 ChainLimit = 3;
 
-	// Declare these variables in the class header
-private:
 	FVector StartLocation;
 	FVector TargetLocation;
 	FVector InterpolatedEnd;
 	float InterpolationTime;
 	float ElapsedTime;
-	UNiagaraComponent* NiagaraComponent;
 	bool bIsInterpolating;
 
 	AMyEnemy* NextEnemy;
@@ -176,9 +174,8 @@ private:
 
 	class AMyCharacter* PlayerCharacter;
 
-	public:
-		// Function to validate if there's a clear line of sight to the target
-		bool IsLineOfSightClear(AActor* PotentialTarget);
+	// Function to validate if there's a clear line of sight to the target
+	bool IsLineOfSightClear(AActor* PotentialTarget);
 
 private:
 	// Debug visualization toggle for line traces
@@ -189,4 +186,8 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Line Trace", meta = (AllowPrivateAccess = "true"))
 	float TraceHeightOffset = 50.f; // Offset from the ground for the trace
 
+public:
+	UNiagaraComponent* NiagaraComponent;
+
+    FORCEINLINE USphereComponent* GetAgroSphere() const { return AgroSphere; }
 };

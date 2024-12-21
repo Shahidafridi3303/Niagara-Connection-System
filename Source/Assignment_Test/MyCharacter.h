@@ -200,6 +200,8 @@ public:
 	UNiagaraSystem* LightningEffect;
 
 	void ActivateChainLightning();
+	void ResetChainLightning();
+	void DeactivateNiagaraAndEnableCollision();
 	bool GetCameraTrace(FVector& OutStart, FVector& OutEnd);
 
 	class AMyEnemy* NextEnemy;
@@ -213,4 +215,8 @@ public:
 	// Function to update the chain count
 	UFUNCTION(BlueprintCallable, Category = "Chain")
 	void AddToChain();
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Chain Lightning")
+	TArray<AMyEnemy*> AffectedEnemies;
+
 };

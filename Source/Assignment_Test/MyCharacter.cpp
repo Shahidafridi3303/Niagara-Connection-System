@@ -19,6 +19,7 @@
 #include "MyEnemy.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
+#include "Components/SphereComponent.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter() :
@@ -267,6 +268,23 @@ void AMyCharacter::ActivateChainLightning()
 	}
 }
 
+void AMyCharacter::ResetChainLightning()
+{
+    for (AMyEnemy* Enemy : AffectedEnemies)
+    {
+        if (Enemy && Enemy->NiagaraComponent)
+        {
+            Enemy->NiagaraComponent->Deactivate();
+			Enemy->GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+        }
+    }
+
+	NiagaraComp->Deactivate();
+    AffectedEnemies.Empty(); // Clear the array
+
+    // Add an on-screen debug message
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, TEXT("Chain Lightning Reset"));
+}
 
 bool AMyCharacter::GetCameraTrace(FVector& OutStart, FVector& OutEnd)
 {

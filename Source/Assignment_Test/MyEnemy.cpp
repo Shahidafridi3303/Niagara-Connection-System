@@ -325,15 +325,6 @@ void AMyEnemy::PerformSphereTrace()
 					HandleOverlappingActors(ValidTargets);
 				}
 			}
-			else
-			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No overlaps found"));
-			}
-
-			// Re-enable capsule collision for this enemy
-			//AgroSphere()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-
-			// Reset trace state
 		}, ChainDelay, false);
 }
 
@@ -372,6 +363,11 @@ void AMyEnemy::HandleOverlappingActors(const TArray<AActor*>& ValidTargets)
 	else
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No visible nearest actor found"));
+		if (PlayerCharacter)
+		{
+			PlayerCharacter->ResetChainLightning();
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Chain Lightning Reset Triggered."));
+		}
 	}
 }
 
@@ -510,6 +506,7 @@ void AMyEnemy::ApplyLightningDamage()
 
 	// Increment the enemy count in the player's chain
 	PlayerCharacter->AddToChain();
+	PlayerCharacter->AffectedEnemies.Add(this);
 
 	// Log damage for debugging
 	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Yellow,FString::Printf(TEXT("Enemy %d takes %f damage"), EnemyIndex + 1, Damage));
