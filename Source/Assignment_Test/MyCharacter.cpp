@@ -207,14 +207,14 @@ void AMyCharacter::Tick(float DeltaTime)
 		NiagaraComp->SetNiagaraVariableVec3(TEXT("User.End"), NextEnemy->GetActorLocation() + FVector(0.f, 0.f, 10.f)); // Adjust Z if needed
 	}
 
-	if (bCanUseNiagara == false)
+	if (bCanUseNiagara == false)  // Cooldown is active
 	{
-		CurrentCooldownTime -= DeltaTime; // Subtract DeltaTime for milliseconds precision
+		CurrentCooldownTime += DeltaTime;  // Increase the cooldown time
 
 		// If cooldown is finished, reset everything
-		if (CurrentCooldownTime <= 0.0f)
+		if (CurrentCooldownTime >= CooldownTime)
 		{
-			CurrentCooldownTime = 0.0f;
+			CurrentCooldownTime = CooldownTime;  // Make sure it doesn't exceed the cooldown time
 
 			// Optionally notify the player that the ability is ready again
 			UE_LOG(LogTemp, Warning, TEXT("Ability is ready!"));
@@ -223,7 +223,13 @@ void AMyCharacter::Tick(float DeltaTime)
 		// Map CurrentCooldownTime from range [0, CooldownTime] to [0, 1]
 		CooldownProgress = FMath::GetMappedRangeValueClamped(FVector2D(0.0f, CooldownTime), FVector2D(1.0f, 0.0f), CurrentCooldownTime);
 	}
+	else  // Cooldown is over
+	{
+		CurrentCooldownTime = 0.0f;  // Reset cooldown timer to 0
+		CooldownProgress = 1.0f;  // Set progress to 0 when it's available again
+	}
 }
+
 
 void AMyCharacter::ActivateChainLightning()
 {
@@ -301,6 +307,7 @@ void AMyCharacter::ActivateChainLightning()
 		// If no valid target is hit, schedule deactivation
 		if (!bHitValidTarget && NiagaraComp && NiagaraComp->IsActive())
 		{
+			CooldownTime = 1.0f;
 			bCanUseNiagara = false;
 
 			FTimerHandle DeactivateTimerHandle;

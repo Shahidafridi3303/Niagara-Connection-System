@@ -228,11 +228,11 @@ public:
 	float CooldownTime = 5.0f;  // Cooldown period in seconds (5 seconds)
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
-	float CurrentCooldownTime = 5.0f; // Timer for the current cooldown
+	float CurrentCooldownTime = 0.0f; // Timer for the current cooldown
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
 	float MillisecondsPerTick = 0.05f; // For updating every 50ms or adjust to your preference
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chain Lightning", meta = (AllowPrivateAccess = "true"))
-	float CooldownProgress = 1.0f;  // Progress from 0 to 1, starts at 1 because cooldown starts from full
+	float CooldownProgress = 0.0f;  // Progress from 0 to 1, starts at 1 because cooldown starts from full
 };
