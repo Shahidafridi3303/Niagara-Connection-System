@@ -339,15 +339,15 @@ void AMyCharacter::ResetChainLightning()
 {
 	for (AMyEnemy* Enemy : AffectedEnemies)
 	{
+		if (Enemy && Enemy->NiagaraComponent)
+		{
+			Enemy->NiagaraComponent->Deactivate();
+		}
 		if (Enemy)
 		{
-			if (Enemy->NiagaraComponent)
-			{
-				Enemy->NiagaraComponent->Deactivate();
-			}
 			Enemy->GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
-			Enemy->bHasPerformedSphereTrace = false;  // Reset trace flag
-			Enemy->bIsProcessing = false;            // Reset processing flag
+			Enemy->bHasPerformedSphereTrace = false;
+			Enemy->bIsProcessing = false;
 		}
 	}
 
@@ -356,14 +356,12 @@ void AMyCharacter::ResetChainLightning()
 		NiagaraComp->Deactivate();
 	}
 	NextEnemy = nullptr;
-	AffectedEnemies.Empty(); // Clear the array
-
-	// Reset chain-related variables
+	AffectedEnemies.Empty();
 	ChainCount = 0;
 
-	// Debug message
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, TEXT("Chain Lightning Reset"));
 }
+
 
 
 bool AMyCharacter::GetCameraTrace(FVector& OutStart, FVector& OutEnd)
@@ -519,9 +517,14 @@ void AMyCharacter::Die()
 
 void AMyCharacter::AddToChain()
 {
-    // Increment the chain count when a chain event happens
-    ChainCount++;
-    // Optionally, log for debugging
-    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("ChainCount: %d"), ChainCount));
+	ChainCount++;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Chain Count: %d"), ChainCount));
+
+	// Ensure chain count doesn't exceed the limit
+	if (ChainCount > 30)
+	{
+		ResetChainLightning();
+	}
 }
+
 
